@@ -5,7 +5,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>异清轩博客</title>
+<title>异清轩博客文章页面</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/nprogress.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -26,7 +26,7 @@
 <![endif]-->
 </head>
 
-<body class="user-select">
+<body class="user-select single">
 <header class="header">
   <nav class="navbar navbar-default" id="navbar">
     <div class="container">
@@ -43,7 +43,7 @@
             </ul>
           </li>
         </ul>
-        <a data-toggle="modal" data-target="#loginModal" class="login" rel="nofollow">Hi,请登录</a>&nbsp;&nbsp;<a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;<a href="" rel="nofollow">找回密码</a> </div>
+        <a href="javascript:;" class="login" rel="nofollow">Hi,请登录</a>&nbsp;&nbsp;<a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;<a href="" rel="nofollow">找回密码</a> </div>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <h1 class="logo hvr-bounce-in"><a href="" title=""><img src="images/logo.png" alt=""></a></h1>
@@ -71,90 +71,83 @@
 <section class="container">
   <div class="content-wrap">
     <div class="content">
-      <div class="jumbotron">
-        <h1>欢迎访问异清轩博客</h1>
-        <p>在这里可以看到前端技术，后端程序，网站内容管理系统等文章，还有我的程序人生！</p>
-      </div>
-      <div id="focusslide" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#focusslide" data-slide-to="0" class="active"></li>
-          <li data-target="#focusslide" data-slide-to="1"></li>
-          <li data-target="#focusslide" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <div class="item active"> <a href="" target="_blank"><img src="images/banner/banner_01.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
-          </div>
-          <div class="item"> <a href="" target="_blank"><img src="images/banner/banner_02.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
-          </div>
-          <div class="item"> <a href="" target="_blank"><img src="images/banner/banner_03.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
-          </div>
+      <header class="article-header">
+        <h1 class="article-title"><a href="article.html">php如何判断一个日期的格式是否正确</a></h1>
+        <div class="article-meta"> <span class="item article-meta-time">
+          <time class="time" data-toggle="tooltip" data-placement="bottom" title="时间：2016-1-4 10:29:39"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
+          </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：第一PHP社区"><i class="glyphicon glyphicon-globe"></i> 第一PHP社区</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
+      </header>
+      <article class="article-content">
+        <p><img data-original="images/banner/banner_03.jpg" src="images/banner/banner_03.jpg" alt="" /></p>
+        <p> 用php获取上个月最后一天的时间，有两种方法，都非常简单，详细实现源码如下： </p>
+        <pre class="prettyprint lang-php">&lt;?php
+  date_default_timezone_set("PRC"); //设置时区
+  //方法一
+  $times = date("d") * 24 * 3600;
+  echo date("Y-m-d H:i:s", time()-$times);
+  echo '&lt;br/&gt;';
+  //方法二
+  $day = date('d');
+  echo date("Y-m-d H:i:s", strtotime(-$day.' day'));
+?&gt;</pre>
+        <p> 方法一是利用当前时间离本月初有多少时间，然后用当前时间减去这个时间差，就可以得到上月最后一天了。 </p>
+        <p> 方法二是先计算本月多少号，即离月初有多少天，然后用strtotime计算出$day天前的时间戳，也可以得到上个月的最后一天。 </p>
+        <p class="article-copyright hidden-xs">未经允许不得转载：<a href="">异清轩博客</a> » <a href="article.html">php如何判断一个日期的格式是否正确</a></p>
+      </article>
+      <div class="article-tags">标签：<a href="" rel="tag">PHP</a></div>
+      <div class="relates">
+        <div class="title">
+          <h3>相关推荐</h3>
         </div>
-        <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">上一个</span> </a> <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">下一个</span> </a> </div>
-      <article class="excerpt-minic excerpt-minic-index">
-        <h2><span class="red">【今日推荐】</span><a href="" title="">从下载看我们该如何做事</a></h2>
-        <p class="note">一次我下载几部电影，发现如果同时下载多部要等上几个小时，然后我把最想看的做个先后排序，去设置同时只能下载一部，结果是不到一杯茶功夫我就能看到最想看的电影。 这就像我们一段时间内想干成很多事情，是同时干还是有选择有顺序的干，结果很不一样。同时...</p>
-      </article>
-      <div class="title">
-        <h3>最新发布</h3>
-        <div class="more"><a href="">PHP</a><a href="">JavaScript</a><a href="">EmpireCMS</a><a href="">Apache</a><a href="">MySQL</a></div>
-      </div>
-      <article class="excerpt excerpt-1"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program">后端程序<i></i></a>
-          <h2><a href="article.html" title="">php如何判断一个日期的格式是否正确</a></h2>
-        </header>
-        <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
-      </article>
-      <article class="excerpt excerpt-2"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program">后端程序<i></i></a>
-          <h2><a href="article.html" title="">php如何判断一个日期的格式是否正确</a></h2>
-        </header>
-        <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
-      </article>
-      <article class="excerpt excerpt-3"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program">后端程序<i></i></a>
-          <h2><a href="article.html" title="">php如何判断一个日期的格式是否正确</a></h2>
-        </header>
-        <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
-      </article>
-      <article class="excerpt excerpt-4"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program">后端程序<i></i></a>
-          <h2><a href="article.html" title="">php如何判断一个日期的格式是否正确</a></h2>
-        </header>
-        <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
-      </article>
-      <article class="excerpt excerpt-5"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program">后端程序<i></i></a>
-          <h2><a href="article.html" title="">php如何判断一个日期的格式是否正确</a></h2>
-        </header>
-        <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i> 2016-1-4 10:29:39</time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
-      </article>
-      <nav class="pagination" style="display: none;">
         <ul>
-          <li class="prev-page"></li>
-          <li class="active"><span>1</span></li>
-          <li><a href="?page=2">2</a></li>
-          <li class="next-page"><a href="?page=2">下一页</a></li>
-          <li><span>共 2 页</span></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
+          <li><a href="article.html">php如何判断一个日期的格式是否正确</a></li>
         </ul>
-      </nav>
+      </div>
+      <div class="title" id="comment">
+        <h3>评论 <small>抢沙发</small></h3>
+      </div>
+      <!--<div id="respond">
+        <div class="comment-signarea">
+          <h3 class="text-muted">评论前必须登录！</h3>
+          <p> <a href="javascript:;" class="btn btn-primary login" rel="nofollow">立即登录</a> &nbsp; <a href="javascript:;" class="btn btn-default register" rel="nofollow">注册</a> </p>
+          <h3 class="text-muted">当前文章禁止评论</h3>
+        </div>
+      </div>-->
+      <div id="respond">
+        <form action="" method="post" id="comment-form">
+          <div class="comment">
+            <div class="comment-title"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+            <div class="comment-box">
+              <textarea placeholder="您的评论可以一针见血" name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="1" ></textarea>
+              <div class="comment-ctrl"> <span class="emotion"><img src="images/face/5.png" width="20" height="20" alt="" />表情</span>
+                <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
+                <input type="hidden" value="1" class="articleid" />
+                <button type="submit" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="postcomments">
+        <ol class="commentlist">
+          <li class="comment-content"><span class="comment-f">#1</span>
+            <div class="comment-avatar"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
+            <div class="comment-main">
+              <p>来自<span class="address">河南郑州</span>的用户<span class="time">(2016-01-06)</span><br />
+                这是匿名评论的内容这是匿名评论的内容，这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容。</p>
+            </div>
+          </li>
+        </ol>
+        
+        <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div>
+      </div>
     </div>
   </div>
   <aside class="sidebar">
@@ -181,7 +174,7 @@
           </div>
           <div role="tabpanel" class="tab-pane centre" id="centre">
             <h4>需要登录才能进入会员中心</h4>
-            <p> <a data-toggle="modal" data-target="#loginModal" class="btn btn-primary">立即登录</a> <a href="javascript:;" class="btn btn-default">现在注册</a> </p>
+            <p> <a href="javascript:;" class="btn btn-primary">立即登录</a> <a href="javascript:;" class="btn btn-default">现在注册</a> </p>
           </div>
           <div role="tabpanel" class="tab-pane contact" id="contact">
             <h2>Email:<br />
@@ -227,7 +220,7 @@
 </footer>
 <!--微信二维码模态框-->
 <div class="modal fade user-select" id="WeChat" tabindex="-1" role="dialog" aria-labelledby="WeChatModalLabel">
-  <div class="modal-dialog" role="document" style="margin-top:120px;max-width:280px;">
+  <div class="modal-dialog" role="document" style="margin-top:120px;width:280px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -254,45 +247,27 @@
     </div>
   </div>
 </div>
-<!--登录注册模态框-->
-<div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form action="/Admin/Index/login" method="post">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="loginModalLabel">登录</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="loginModalUserNmae">用户名</label>
-            <input type="text" class="form-control" id="loginModalUserNmae" placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
-          </div>
-          <div class="form-group">
-            <label for="loginModalUserPwd">密码</label>
-            <input type="password" class="form-control" id="loginModalUserPwd" placeholder="请输入密码" maxlength="18" autocomplete="off" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="submit" class="btn btn-primary">登录</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!--右键菜单列表-->
 <div id="rightClickMenu">
   <ul class="list-group rightClickMenuList">
     <li class="list-group-item disabled">欢迎访问异清轩博客</li>
     <li class="list-group-item"><span>IP：</span>172.16.10.129</li>
     <li class="list-group-item"><span>地址：</span>河南省郑州市</li>
-    <li class="list-group-item"><span>系统：</span>Windows10 </li>
+    <li class="list-group-item"><span>系统：</span>Windows10</li>
     <li class="list-group-item"><span>浏览器：</span>Chrome47</li>
   </ul>
 </div>
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.ias.js"></script> 
-<script src="js/scripts.js"></script>
+<script src="js/scripts.js"></script> 
+<script src="js/jquery.qqFace.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.emotion').qqFace({
+		id : 'facebox', 
+		assign:'comment-textarea', 
+		path:'/Home/images/arclist/'	//表情存放的路径
+	});
+ });   
+</script>
 </body>
 </html>
