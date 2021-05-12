@@ -1,6 +1,8 @@
 <p align="center">
   <img width="300" src="https://zhaolinyang.ltd/images/赵林阳.jpg" />  
   <h2 align="center">赵林阳|个人简历网页</h2>
+</p>
+<p align="center">
   <h2 align="center">ladd zhao</h2>
 </p>
 
