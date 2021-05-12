@@ -24,9 +24,9 @@
   <h5 align="">illustrator_■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□_65%</h5> 
 </p>
 
-<!--<p align="right">
+<p align="right">
   </a>
-    <a href="https://twitter.com/intent/tweet?text=Add%20dynamically%20generated%20GitHub%20Trophy%20on%20your%20readme%0D%0A&url=https%3A%2F%2Fgithub.com%2Fryo-ma%2Fgithub-profile-trophy">
-    <img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fryo-ma%2Fgithub-profile-trophy"/> 
+    <a href="https://www.baidu.com/&url=https://www.baidu.com">
+    <img src="?style=for-the-badge&logo=appveyor"/> 
   </a>
 </p>
