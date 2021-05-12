@@ -25,8 +25,7 @@
 </p>
 
 <p align="right">
-  </a>
-    <a href="https://www.baidu.com/&url=https://www.baidu.com">
-    <img src="?style=for-the-badge&logo=appveyor"/> 
-  </a>
+<a href="#"><img src="https://img.shields.io/badge/%E9%82%AE%E7%AE%B1-laddzhao%40gmail.com-blue" alt="Discord"></a>
+<a href="https://github.com/antonkomarev/github-profile-views-counter/blob/master/LICENSE"><img src="https://img.shields.io/github/license/antonkomarev/github-profile-views-counter.svg?style=flat-square" alt="License"></a>
 </p>
+
