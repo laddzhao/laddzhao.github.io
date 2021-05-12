@@ -25,7 +25,8 @@
 </p>
 
 <p align="right">
-<a href="#"><img src="https://img.shields.io/badge/%E9%82%AE%E7%AE%B1-laddzhao%40gmail.com-blue" alt="Discord"></a>
-<a href="https://github.com/antonkomarev/github-profile-views-counter/blob/master/LICENSE"><img src="https://img.shields.io/github/license/antonkomarev/github-profile-views-counter.svg?style=flat-square" alt="License"></a>
+<a href="#"><img src="https://img.shields.io/badge/%E9%82%AE%E7%AE%B1-laddzhao%40gmail.com-blue"></a>
+<a href="https://github.com/laddzhao/laddzhao.github.io"><img src="https://img.shields.io/github/watchers/laddzhao/laddzhao.github.io?label=%E6%9F%A5%E7%9C%8B%E8%80%85&style=social"></a>  
+<a href="https://www.instagram.com/ladd.zhao"><img src="https://img.shields.io/badge/Instagram-ladd.zhao-green"></a>
 </p>
 
