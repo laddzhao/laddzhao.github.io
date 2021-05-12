@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="160" src="https://zhaolinyang.ltd/images/p1.png" />  
+  <img width="300" src="https://zhaolinyang.ltd/images/赵林阳.jpg" />  
   <h2 align="center">赵林阳|个人简历网页</h2>
   <h2 align="center">ladd zhao</h2>
 </p>
