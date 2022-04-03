@@ -2,15 +2,31 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>表单</title>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>个人信息</title>
+
+<img src="assets/img/profile-img.jpg" class="img-fluid" width="80%" alt="个人图片">
+
 </head>
    <body>
-      <h2>Student Contact Form</h2>
-      <form action="mailto:2239632396@qq.com" method="post" enctype="text/plain">
-         Student Name:<br><input type="text" name="sname"> <br>
-         Student Subject:<br><input type="text" name="ssubject"><br>
-         <input type="submit" value="Send">
+<h1> <font face="宋体" color="#00f00">我的信息</font> </h1>
+<ul type="square">
+<p><li align="center"> QQ：2239632396 </li> </p>
+<p><li align="center"> 电话：+86 15184218238 </li> </p>
+<p><li align="center"> 地址：中国、喀左 </li> </p>
+
+</ul>
+
+      <h2>给我发邮件</h2>
+      <form action="http://www.kazuoly.com" method="post" enctype="text/plain">
+         姓名:<br><input type="text" name="姓名"> <br>
+         联系方式:<br><input type="text" name="联系方式"><br/>
+         性别：<br/><input type="radio" name="xingbie"/value="男">男 <input type="radio"name="xingbie" value="女">女<br/>
+         内容：<br/><form>
+<textarea cols="30" name="内容"></textarea>
+</form><br/>
+         <input type="submit" value="发送">
       </form>
    </body>
 </html>
