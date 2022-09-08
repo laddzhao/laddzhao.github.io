@@ -2,14 +2,15 @@
   <h3 align="left">赵林阳|个人介绍网页</h3>
 </p>
 <p align="center">
-  <img width="300" src="https://kzxs.org.cn/images/赵林阳.png" />  
+  <img width="300" src="https://xn--btvv65f45f.site//images/赵林阳.png" />  
   <h1 align="center">ladd zhao</h1>
 </p>
 <p align="center">
 
   <h3 align="center">github----------ladd zhao</h3>
   <h3 align="center">领英----------赵林阳</h3>
-  <h3 align="center">现在的学校----------辽宁职业学院
+  <h3 align="center">以前的学校----------辽宁职业学院</h3>
+  <h3 align="center">现在的学校----------大连东软信息学院</h3>
 </h3> 
 </p>
 <p>
