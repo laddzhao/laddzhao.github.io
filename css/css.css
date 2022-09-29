@@ -1,17 +1,20 @@
-.headtext{
-	width: 50%;
-	height: 60%;
-	color: #000000;
-	font-size: 20px;
-	text-align: center;
+.logo img{
+	margin:0px 0% 0px 5%;
+	width: 30%;
+	border-radius: 20%;
+	animation:fadenum 4s;
+	
+	}
+	@keyframes fadenum{
+	  0%{transform:translateX(200%);}
+}
+.bg{
 	background-color: #ffffff; /* 浏览器不支持时显示 */
 	background-image: linear-gradient(#aaff00, #fff);
 }
 
 table img{
-	margin:10px 0px 10px 25%;
-	width: 50%;
-	border-radius: 10%;
+	border-radius: 20%;
 }
 
 .text2{
