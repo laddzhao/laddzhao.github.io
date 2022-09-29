@@ -1,0 +1,73 @@
+.headtext{
+	width: 50%;
+	height: 60%;
+	color: #000000;
+	font-size: 20px;
+	text-align: center;
+	background-color: #ffffff; /* 浏览器不支持时显示 */
+	background-image: linear-gradient(#aaff00, #fff);
+}
+
+table img{
+	margin:10px 0px 10px 25%;
+	width: 50%;
+	border-radius: 10%;
+}
+
+.text2{
+	background-color: #ffffff; /* 不支持线性的时候显示 */
+	background-image: linear-gradient(to right, #aaff00 , #fff);
+}
+
+.religion{
+	text-align: center;
+	font-family: 宋体;
+	width: 50%;
+	height: 50%;
+	font-size: 50px;
+}
+
+.Buddhism{
+	width: 45%;
+	background: #ffff00;
+	margin:10px 10px 10px 0px;
+}
+
+.Taoism{
+	width: 45%;
+	background-image: linear-gradient(#fff, #000);
+	margin:10px 0px 10px 0px;
+}
+
+.qq{
+	text-align: center;
+	font-family: 宋体;
+	width: 50%;
+	height: 50%;
+	font-size: 50px;
+}
+
+
+.phone{
+	text-align: center;
+	font-family: 宋体;
+	width: 50%;
+	height: 50%;
+	font-size: 50px;
+}
+
+.mail{
+	text-align: center;
+	font-family: 宋体;
+	width: 50%;
+	height: 50%;
+	font-size: 50px;
+}
+
+.home{
+	text-align: center;
+	font-family: 宋体;
+	width: 50%;
+	height: 50%;
+	font-size: 50px;
+}
