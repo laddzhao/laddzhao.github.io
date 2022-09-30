@@ -74,3 +74,19 @@ table img{
 	height: 50%;
 	font-size: 50px;
 }
+
+.address{
+	background-image: url('../images/address.png');
+	background-size: 100%;
+	padding: 20px;
+	background-position:center center;
+}
+
+.address1{
+	width:50px;
+	height:50px;
+}
+
+.address2{
+text-align: center;
+}
