@@ -1,7 +1,14 @@
+@font-face
+{
+	font-family: 平方塞北体;
+	src: url('平方塞北体.ttf'); 
+}
+
 .logo img{
 	margin:0px 0% 0px 5%;
 	width: 30%;
-	border-radius: 20%;
+	height: 30%;
+	border-radius: 50%;
 	animation:fadenum 4s;
 	
 	}
@@ -24,7 +31,7 @@ table img{
 
 .religion{
 	text-align: center;
-	font-family: 宋体;
+	font-family: 平方塞北体;
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
@@ -44,7 +51,7 @@ table img{
 
 .qq{
 	text-align: center;
-	font-family: 宋体;
+	font-family:平方塞北体;
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
@@ -53,7 +60,7 @@ table img{
 
 .phone{
 	text-align: center;
-	font-family: 宋体;
+	font-family:平方塞北体;
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
@@ -61,7 +68,7 @@ table img{
 
 .mail{
 	text-align: center;
-	font-family: 宋体;
+	font-family:平方塞北体;
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
@@ -69,7 +76,7 @@ table img{
 
 .home{
 	text-align: center;
-	font-family: 宋体;
+	font-family:平方塞北体;
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
