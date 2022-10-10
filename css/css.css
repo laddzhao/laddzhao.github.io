@@ -51,12 +51,31 @@ table img{
 
 .qq{
 	text-align: center;
-	font-family:平方塞北体;
-	width: 50%;
-	height: 50%;
-	font-size: 50px;
+	background-color: #55aaff;
 }
 
+.qqh1{
+	text-align: center;
+	
+}
+
+.qqimg{
+	width: 50px;
+}
+
+.vk{
+	text-align: center;
+	background-color: #55aaff;
+}
+
+.vkh1{
+	text-align: center;
+	
+}
+
+.vkimg{
+	width: 50px;
+}
 
 .phone{
 	text-align: center;
