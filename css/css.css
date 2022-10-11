@@ -56,6 +56,11 @@ table img{
 
 .qqh1{
 	text-align: center;
+	border: #55aaff;
+	border-style: double;
+	padding: 6px 0px 4px 1px;
+	margin: 1px 0px 6px 1px;
+	border-radius: 10px;
 	
 }
 
@@ -70,7 +75,11 @@ table img{
 
 .vkh1{
 	text-align: center;
-	
+	border: #55aaff;
+	border-style: double;
+	padding: 6px 0px 4px 1px;
+	margin: 1px 0px 6px 1px;
+	border-radius: 10px;
 }
 
 .vkimg{
