@@ -20,13 +20,14 @@
 	background-image: linear-gradient(#aaff00, #fff);
 }
 
-table img{
-	border-radius: 20%;
-}
-
 .text2{
 	background-color: #ffffff; /* 不支持线性的时候显示 */
 	background-image: linear-gradient(to right, #aaff00 , #fff);
+}
+
+.text2 p{
+	
+	font-size: 20px;
 }
 
 .religion{
@@ -35,18 +36,24 @@ table img{
 	width: 50%;
 	height: 50%;
 	font-size: 50px;
+	color: #00ff00;
+	text-shadow: 5px 10px 15px #ffff00;
 }
 
 .Buddhism{
 	width: 45%;
 	background: #ffff00;
 	margin:10px 10px 10px 0px;
+	border-radius: 20px;
+    box-shadow:2px 6px 50px #ffff00;
 }
 
 .Taoism{
 	width: 45%;
 	background-image: linear-gradient(#fff, #000);
 	margin:10px 0px 10px 0px;
+	border-radius: 20px;
+	box-shadow:2px 6px 50px #000;
 }
 
 .qq{
