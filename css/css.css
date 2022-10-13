@@ -93,6 +93,25 @@
 	width: 50px;
 }
 
+.github{
+	text-align: center;
+	background-color: #000000;
+}
+
+.githubh1{
+	text-align: center;
+	border: #000000;
+	border-style: double;
+	padding: 6px 0px 4px 1px;
+	margin: 1px 0px 6px 1px;
+	border-radius: 10px;
+	
+}
+
+.githubimg{
+	width: 50px;
+}
+
 .phone{
 	text-align: center;
 	font-family:平方塞北体;
