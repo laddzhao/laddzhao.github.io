@@ -21,8 +21,13 @@
 }
 
 .text2{
-	background-color: #ffffff; /* 不支持线性的时候显示 */
-	background-image: linear-gradient(to right, #aaff00 , #fff);
+	background-color: #aaff00; /* 不支持线性的时候显示 */
+	background-image: linear-gradient(to right, #0f0 , #f00 , #ff0 , #fff , #000);
+}
+
+.text2 h3{
+	color: #fff;
+	font-size: 20px;
 }
 
 .text2 p{
