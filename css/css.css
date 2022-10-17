@@ -50,7 +50,7 @@
 	background: #ffff00;
 	margin:10px 10px 10px 0px;
 	border-radius: 20px;
-    box-shadow:2px 6px 50px #ffff00;
+    box-shadow:2px 6px 30px #55ff00;
 }
 
 .Taoism{
@@ -58,7 +58,7 @@
 	background-image: linear-gradient(#fff, #000);
 	margin:10px 0px 10px 0px;
 	border-radius: 20px;
-	box-shadow:2px 6px 50px #000;
+	box-shadow:2px 6px 30px #000;
 }
 
 .qq{
@@ -113,33 +113,57 @@
 	
 }
 
-.githubimg{
-	width: 50px;
-}
-
 .phone{
 	text-align: center;
-	font-family:平方塞北体;
-	width: 50%;
-	height: 50%;
-	font-size: 50px;
+	background-color: #4ce670;
+}
+
+.phoneh1{
+	font-size: 25px;
+	text-align: center;
+	border: #4ce670;
+	border-style: double;
+	padding: 6px 0px 4px 1px;
+	margin: 1px 0px 6px 1px;
+	border-radius: 10px;
+}
+
+.phoneimg{
+	width: 50px;
 }
 
 .mail{
 	text-align: center;
-	font-family:平方塞北体;
-	width: 50%;
-	height: 50%;
-	font-size: 50px;
+	background-color: #ffaa00;
 }
 
-.home{
+.mailh1{
+	font-size: 25px;
 	text-align: center;
-	font-family:平方塞北体;
-	width: 50%;
-	height: 50%;
-	font-size: 50px;
+	border: #ffaa00;
+	border-style: double;
+	padding: 6px 0px 4px 1px;
+	margin: 1px 0px 6px 1px;
+	border-radius: 10px;
 }
+
+.mailimg{
+	width: 50px;
+}
+
+.globe{
+	text-align: center;
+	background-color: #55aaff;
+}
+
+.globeimg{
+	width: 50px;
+}
+
+.githubimg{
+	width: 50px;
+}
+
 
 .address{
 	background-image: url('../images/address.png');
