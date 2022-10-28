@@ -2,7 +2,7 @@
   <h3 align="left">赵林阳|个人介绍网页</h3>
 </p>
 <p align="center">
-  <img width="300" src="https://xn--btvv65f45f.site//images/赵林阳.png" />  
+  <img width="300" src="https://xn--btvv65f45f.site//images/index.gif" />  
   <h1 align="center">ladd zhao</h1>
 </p>
 <p align="center">
