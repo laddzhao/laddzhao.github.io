@@ -1,9 +1,6 @@
-@font-face
-{
-	font-family: 平方塞北体;
-	src: url('平方塞北体.ttf'); 
+a{
+	 text-decoration:none
 }
-
 .logo img{
 	margin:0px 0% 0px 5%;
 	width: 30%;
@@ -67,6 +64,7 @@
 }
 
 .qqh1{
+	font-family: 平方塞北体;
 	text-align: center;
 	border: #55aaff;
 	border-style: double;
@@ -85,6 +83,7 @@
 }
 
 .vkh1{
+	font-family: 平方塞北体;
 	text-align: center;
 	border: #55aaff;
 	border-style: double;
@@ -103,6 +102,7 @@
 }
 
 .githubh1{
+	font-family: 平方塞北体;
 	text-align: center;
 	border: #000000;
 	border-style: double;
@@ -118,6 +118,7 @@
 }
 
 .phoneh1{
+	font-family: 平方塞北体;
 	font-size: 25px;
 	text-align: center;
 	border: #4ce670;
@@ -137,6 +138,7 @@
 }
 
 .mailh1{
+	font-family: 平方塞北体;
 	font-size: 25px;
 	text-align: center;
 	border: #ffaa00;
