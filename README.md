@@ -2,8 +2,7 @@
 ![image](https://xn--btvv65f45f.site/404/img/赵林阳.png)
 
 ```
-<!-- 
-//
+<!--
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
@@ -26,305 +25,251 @@
 //
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-//           佛祖保佑       永不宕机     永无BUG
-//
-//       佛曰:
-//               写字楼里写字间，写字间里程序员；
-//               程序人员写程序，又拿程序换酒钱。
-//               酒醒只在网上坐，酒醉还来网下眠；
-//               酒醉酒醒日复日，网上网下年复年。
-//               但愿老死电脑间，不愿鞠躬老板前；
-//               奔驰宝马贵者趣，公交自行程序员。
-//               别人笑我忒疯癫，我笑自己命太贱；
-//               不见满街漂亮妹，哪个归得程序员？
-//
- -->
+//           佛祖保佑       永不宕机     永无BUG 
+-->
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title></title>
+		<title>赵林阳</title>
+		<link rel="stylesheet" href="css/css.css"/>
 		<style>
-			body{
-				background-color: #000;/* 网页背景颜色 */
+			@font-face
+			{
+				font-family: 平方塞北体;
+				src: url('平方塞北体.ttf'); 
 			}
-			/* 位置 */
-			#box404{
-				display: flex;
-				flex-direction: row;
+			
+			.logo img{
+				margin:0px 0% 0px 5%;
+				width: 30%;
+				height: 30%;
+				border-radius: 50%;
+				animation:fadenum 4s;
+				
+				}
+				@keyframes fadenum{
+				  0%{transform:translateX(200%);}
+			}
+			.bg{
+				background-color: #ffffff; /* 浏览器不支持时显示 */
+				background-image: linear-gradient(#aaff00, #fff);
+			}
+			
+			.text2{
+				background-color: #aaff00; /* 不支持线性的时候显示 */
+				background-image: linear-gradient(to right, #0f0 , #f00 , #ff0 , #fff , #000);
+			}
+			
+			.text2 h3{
+				color: #fff;
+				font-size: 20px;
+			}
+			
+			.text2 p{
+				
+				font-size: 20px;
+			}
+			
+			.religion{
+				text-align: center;
+				font-family: 平方塞北体;
+				width: 30%;
+				font-size: 50px;
+				color: #00ff00;
+				text-shadow: 5px 10px 15px #ffff00;
+			}
+			
+			.Buddhism{
+				width: 45%;
+				background: #ffff00;
+				margin:10px 10px 10px 10px;
+				border-radius: 20px;
+			    box-shadow:2px 6px 30px #55ff00;
 				
 			}
-			.box4{
-				transform: translate(20px,40px);
-				position: inherit;
-				float: left;
-			} 
-			.box0{
-				transform: translate(40px,40px);
-				position: inherit;
-				float: left;
-			} 
-			.box4-2{
-				transform: translate(60px,40px);
-				position: inherit;
-				float: left;
-			} 
-			/* 位置结束 */
 			
-			/* 边框 */
-			#box1{
-				border-style: double;/* 边框样式 */
-				width: 100px;/* 宽度 */
-				height: 100px;/* 高度 */
-				border-width: 0px 0px 10px 10px;/* 边框宽度（上右下左） */
-				border-color: #55ff7f;/* 边框颜色 */
-				float: left;/* 浮动（左） */
-				border-radius: 5px;/* 圆角*/
+			.Taoism{
+				width: 45%;
+				background-image: linear-gradient(#fff, #000);
+				margin:10px 0px 10px 0px;
+				border-radius: 20px;
+				box-shadow:2px 6px 30px #000;
 			}
-			#box2{
-				border-style: double;
-				width: 50px;
-				height: 200px;
-				border-width: 10px 10px 0px 0px;
-				border-color: #55ff7f;
-				border-radius: 5px;
-			}
-			#box3{
-				border-style: double;
-				width: 90px;
-				height: 190px;
-				border-width: 10px 10px 10px 10px;
-				border-color: #55ff7f;
-				border-radius: 5px;
-			}
-			#box4{
-				border-style: double;
-				width: 100px;
-				height: 100px;
-				border-width: 0px 0px 10px 10px;
-				border-color: #55ff7f;
-				float: left;
-				border-radius: 5px;
-			}
-			#box5{
-				border-style: double;
-				width: 50px;
-				height: 200px;
-				border-width: 10px 10px 0px 0px;
-				border-color: #55ff7f;
-				border-radius: 5px;
-			}
-			/* 边框结束 */
-			/* 动画4-左半部分 */
-			@keyframes img1 {
-				0%{
-					top: 0px;
-					left: 0px;
-					height: 40px;
-				}
-				25%{
-					top: 100px;
-					left: 0px;
-					height: 10px;
-				}
-				50%{
-					top: 100px;
-					left: 100px;
-				}
-				75%{
-					top: 100px;
-					left: 0px;
-				}
-				100%{
-					top: 0px;
-					left: 0px;
-				}
-			}
-			/* 动画4右半部分 */
-			@keyframes img1-1 {
-				0%{
-					top: 160px;
-					left: 50px;
-					height: 40px;
-				}
-				25%{
-					top: 0px;
-					left: 50px;	
-					height: 10px;
-				}
-				50%{
-					top: 0px;
-					left: 0px;
-				}
-				75%{
-					top: 0px;
-					left: 50px;
-				}
-				100%{
-					top: 200px;
-					left: 50px;
-				}
-			}
-			/* 动画0 */
-			@keyframes img2 {
-				0%{
-					top: 0px;
-					left: 0px;
-					height: 40px;
-					width: 10px;
-				}
-				25%{
-					top: 200px;
-					left: 0px;
-					height: 10px;
-					width: 10px;
-				}
-				50%{
-					top: 200px;
-					left: 100px;
-					height: 10px;
-					width: 10px;
-				}
-				75%{
-					top: 0px;
-					left: 100px;
-					height: 10px;
-					width: 10px;
-					
-				}
-				100%{
-					top: 0px;
-					left: 0px;
-					height: 10px;
-					width: 40px;
-				}
-			}
-			/* 右侧动画4-左半部分 */
-			@keyframes img1 {
-				0%{
-					top: 100px;
-					left: 60px;
-					width: 40px;
-				}
-				25%{
-					top: 100px;
-					left: 0px;
-					width: 10px;
-				}
-				50%{
-					top: 0px;
-					left: 0px;
-				}
-				75%{
-					top: 100px;
-					left: 0px;
-				}
-				100%{
-					top: 100px;
-					left: 100px;
-				}
-			}
-			/* 右侧右侧动画4右半部分 */
-			@keyframes img1-1 {
-				0%{
-					top: 0px;
-					left: 0px;
-					width: 40px;
-				}
-				25%{
-					top: 0px;
-					left: 50px;	
-					width: 10px;
-				}
-				50%{
-					top: 200px;
-					left: 50px;
-				}
-				75%{
-					top: 0px;
-					left: 50px;
-				}
-				100%{
-					top: 0px;
-					left: 0px;
-				}
-			}
-			/* 运动的图形 */
-			#box1-img1{
-				animation: img1 4s infinite;/* 动画定义（把上面设置的动画加载进来）4秒 */
-				width: 10px;/* 宽度 */
-				height: 10px;/* 高度 */
-				background-color: #ffffff;/* 颜色 */
-				position: absolute;/* 定位方式 */
-				z-index: 1;/* 最顶层 */
-				border-radius: 10px;/* 圆角 */
-			}
-			#box2-img1{
-				animation: img1-1 4s infinite;
-				width: 10px;
-				height: 10px;
-				background-color: #ffffff;
-				position: absolute;
-				z-index: 1;
-				border-radius: 10px;
-			}
-			#box3-img1{
-				animation: img2 4s infinite;
-				width: 10px;
-				height: 10px;
-				background-color: #ffffff;
-				position: absolute;
-				z-index: 1;
-				border-radius: 10px;
-			}
-			#box4-img1{
-				animation: img1 4s infinite;
-				width: 10px;
-				height: 10px;
-				background-color: #ffffff;
-				position: absolute;
-				z-index: 1;
-				border-radius: 10px;
-			}
-			#box5-img1{
-				animation: img1-1 4s infinite;
-				width: 10px;
-				height: 10px;
-				background-color: #ffffff;
-				position: absolute;
-				z-index: 1;
-				border-radius: 10px;
-			}
-			/* 运动的图形结束 */
 			
+			.qq{
+				text-align: center;
+				background-color: #55aaff;
+			}
+			
+			.qqh1{
+				text-align: center;
+				border: #55aaff;
+				border-style: double;
+				padding: 6px 0px 4px 1px;
+				margin: 1px 0px 6px 1px;
+				border-radius: 10px;
+			}
+			
+			.qqimg{
+				width: 50px;
+			}
+			
+			.vk{
+				text-align: center;
+				background-color: #55aaff;
+			}
+			
+			.vkh1{
+				text-align: center;
+				border: #55aaff;
+				border-style: double;
+				padding: 6px 0px 4px 1px;
+				margin: 1px 0px 6px 1px;
+				border-radius: 10px;
+			}
+			
+			.vkimg{
+				width: 50px;
+			}
+			
+			.github{
+				text-align: center;
+				background-color: #000000;
+			}
+			
+			.githubh1{
+				text-align: center;
+				border: #000000;
+				border-style: double;
+				padding: 6px 0px 4px 1px;
+				margin: 1px 0px 6px 1px;
+				border-radius: 10px;
+				
+			}
+			
+			.phone{
+				text-align: center;
+				background-color: #4ce670;
+			}
+			
+			.phoneh1{
+				font-size: 25px;
+				text-align: center;
+				border: #4ce670;
+				border-style: double;
+				padding: 6px 0px 4px 1px;
+				margin: 1px 0px 6px 1px;
+				border-radius: 10px;
+			}
+			
+			.phoneimg{
+				width: 50px;
+			}
+			
+			.mail{
+				text-align: center;
+				background-color: #ffaa00;
+			}
+			
+			.mailh1{
+				font-size: 25px;
+				text-align: center;
+				border: #ffaa00;
+				border-style: double;
+				padding: 6px 0px 4px 1px;
+				margin: 1px 0px 6px 1px;
+				border-radius: 10px;
+			}
+			
+			.mailimg{
+				width: 50px;
+			}
+			
+			.globe{
+				text-align: center;
+				background-color: #55aaff;
+			}
+			
+			.globeimg{
+				width: 50px;
+			}
+			
+			.githubimg{
+				width: 50px;
+			}
+			
+			
+			.address{
+				background-image: url('../images/address.png');
+				background-size: 100%;
+				padding: 20px;
+				background-position:center center;
+			}
+			
+			.address1{
+				width:50px;
+				height:50px;
+			}
+			
+			.address2{
+			text-align: center;
+			}
 		</style>
 	</head>
+
+
 	<body>
-		<div id="box404">
-		<!-- 4 -->
-		<div class="box4">
-		<div id="box1"></div>
-		<div id="box1-img1"></div>
-		<div id="box2"></div>
-		<div id="box2-img1"></div>
-		</div>
-		<!-- 4结束 -->
-		<!-- 0 -->
-		<div class="box0">
-		<div id="box3"></div>
-		<div id="box3-img1"></div>
-		</div>
-		<!-- 0结束 -->
-		<!-- 第二个4 -->
-		<div class="box4-2">
-		<div id="box4"></div>
-		<div id="box4-img1"></div>
-		<div id="box5"></div>
-		<div id="box5-img1"></div>
-		</div>
-		<!-- 第二个4结束 -->
-		</div>
+		<table border="1" width="100%">
+			<tr class="bg">
+				<td colspan="2">
+					<div class="logo"><img src="images/profile-img.jpg" alt="个人图片"/></div></td>
+			</tr>
+			<tr>
+				<td class="text2" colspan="2"><h3>我的信息：</h3></td>
+			</tr>
+			<tr height="80">
+				<td class="religion">信仰</td>
+				<td>
+					<img class="Buddhism" src="images/buddha.png" alt="佛教"/><img class="Taoism" src="images/yin-yang.png" alt="道教"/>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="qq"><img class="qqimg" src="images/qq.gif"/></td>
+				<td>
+					<a target="_blank" href="tencent://message/?uin=2239632396"><h1 class="qqh1">2239632396</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="vk"><img class="vkimg" src="images/vk.gif"/></td>
+				<td>
+					<a target="_blank" href="https://vk.com/zhaolinyang"><h1 class="vkh1">zhaolinyang</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="github"><img class="githubimg" src="images/github.gif"/></td>
+				<td>
+					<a target="_blank" href="https://github.com/laddzhao"><h1 class="githubh1">zhaolinyang</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="phone"><img class="phoneimg" src="images/phone.gif"/></td>
+				<td>
+					<a target="_blank" href="#"><h1 class="phoneh1">+86&nbsp;15184218238</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="mail"><img class="mailimg" src="images/mail.gif"/></td>
+				<td>
+					<a target="_blank" href="mailto:2239632396@qq.com"><h1 class="mailh1">2239632396@qq.com</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
+				<td class="globe"><img class="globeimg" src="images/globe.gif"/></td>
+				<td class="address"><a target="_blank" href="https://surl.amap.com/LLEXzEt2Wy"><p class="address2"><img class="address1" src="images/navigation.png"/></p></a></td>
+			</tr>
+		</table>
 	</body>
 </html>
 ```
