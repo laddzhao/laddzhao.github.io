@@ -1,5 +1,5 @@
 # 动画效果的404网页
-![image](https://xn--btvv65f45f.site/img/赵林阳.png)
+![image](https://赵林阳.site/images/profile-img.jpg)
 
 ```
 <!--
