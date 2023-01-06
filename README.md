@@ -1,6 +1,3 @@
-# 个人网站
-
-```
 <!--
 //                       _oo0oo_
 //                      o8888888o
@@ -38,182 +35,6 @@
 			{
 				font-family: 平方塞北体;
 				src: url('平方塞北体.ttf'); 
-			}
-			
-			.logo img{
-				margin:0px 0% 0px 5%;
-				width: 30%;
-				height: 30%;
-				border-radius: 50%;
-				animation:fadenum 4s;
-				
-				}
-				@keyframes fadenum{
-				  0%{transform:translateX(200%);}
-			}
-			.bg{
-				background-color: #ffffff; /* 浏览器不支持时显示 */
-				background-image: linear-gradient(#aaff00, #fff);
-			}
-			
-			.text2{
-				background-color: #aaff00; /* 不支持线性的时候显示 */
-				background-image: linear-gradient(to right, #0f0 , #f00 , #ff0 , #fff , #000);
-			}
-			
-			.text2 h3{
-				color: #fff;
-				font-size: 20px;
-			}
-			
-			.text2 p{
-				
-				font-size: 20px;
-			}
-			
-			.religion{
-				text-align: center;
-				font-family: 平方塞北体;
-				width: 30%;
-				font-size: 50px;
-				color: #00ff00;
-				text-shadow: 5px 10px 15px #ffff00;
-			}
-			
-			.Buddhism{
-				width: 45%;
-				background: #ffff00;
-				margin:10px 10px 10px 10px;
-				border-radius: 20px;
-			    box-shadow:2px 6px 30px #55ff00;
-				
-			}
-			
-			.Taoism{
-				width: 45%;
-				background-image: linear-gradient(#fff, #000);
-				margin:10px 0px 10px 0px;
-				border-radius: 20px;
-				box-shadow:2px 6px 30px #000;
-			}
-			
-			.qq{
-				text-align: center;
-				background-color: #55aaff;
-			}
-			
-			.qqh1{
-				text-align: center;
-				border: #55aaff;
-				border-style: double;
-				padding: 6px 0px 4px 1px;
-				margin: 1px 0px 6px 1px;
-				border-radius: 10px;
-			}
-			
-			.qqimg{
-				width: 50px;
-			}
-			
-			.vk{
-				text-align: center;
-				background-color: #55aaff;
-			}
-			
-			.vkh1{
-				text-align: center;
-				border: #55aaff;
-				border-style: double;
-				padding: 6px 0px 4px 1px;
-				margin: 1px 0px 6px 1px;
-				border-radius: 10px;
-			}
-			
-			.vkimg{
-				width: 50px;
-			}
-			
-			.github{
-				text-align: center;
-				background-color: #000000;
-			}
-			
-			.githubh1{
-				text-align: center;
-				border: #000000;
-				border-style: double;
-				padding: 6px 0px 4px 1px;
-				margin: 1px 0px 6px 1px;
-				border-radius: 10px;
-				
-			}
-			
-			.phone{
-				text-align: center;
-				background-color: #4ce670;
-			}
-			
-			.phoneh1{
-				font-size: 25px;
-				text-align: center;
-				border: #4ce670;
-				border-style: double;
-				padding: 6px 0px 4px 1px;
-				margin: 1px 0px 6px 1px;
-				border-radius: 10px;
-			}
-			
-			.phoneimg{
-				width: 50px;
-			}
-			
-			.mail{
-				text-align: center;
-				background-color: #ffaa00;
-			}
-			
-			.mailh1{
-				font-size: 25px;
-				text-align: center;
-				border: #ffaa00;
-				border-style: double;
-				padding: 6px 0px 4px 1px;
-				margin: 1px 0px 6px 1px;
-				border-radius: 10px;
-			}
-			
-			.mailimg{
-				width: 50px;
-			}
-			
-			.globe{
-				text-align: center;
-				background-color: #55aaff;
-			}
-			
-			.globeimg{
-				width: 50px;
-			}
-			
-			.githubimg{
-				width: 50px;
-			}
-			
-			
-			.address{
-				background-image: url('../images/address.png');
-				background-size: 100%;
-				padding: 20px;
-				background-position:center center;
-			}
-			
-			.address1{
-				width:50px;
-				height:50px;
-			}
-			
-			.address2{
-			text-align: center;
 			}
 		</style>
 	</head>
@@ -255,7 +76,7 @@
 			<tr height="80">
 				<td class="phone"><img class="phoneimg" src="images/phone.gif"/></td>
 				<td>
-					<a target="_blank" href="#"><h1 class="phoneh1">+86&nbsp;15184218238</h1></a>
+					<a target="_blank" href="#"><h1 class="phoneh1">+86</h1></a>
 				</td>
 			</tr>
 			<tr height="80">
@@ -265,10 +86,15 @@
 				</td>
 			</tr>
 			<tr height="80">
+				<td class="mail"><img class="mailimg" src="images/ks.gif"/></td>
+				<td>
+					<a target="_blank" href="ksimg.html"><h1 class="mailh1">快手图片资源</h1></a>
+				</td>
+			</tr>
+			<tr height="80">
 				<td class="globe"><img class="globeimg" src="images/globe.gif"/></td>
 				<td class="address"><a target="_blank" href="https://surl.amap.com/LLEXzEt2Wy"><p class="address2"><img class="address1" src="images/navigation.png"/></p></a></td>
 			</tr>
 		</table>
 	</body>
 </html>
-```
