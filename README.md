@@ -102,3 +102,7 @@
 </html>
 
 ```
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=PlexPt/awesome-chatgpt-prompts-zh,laddzhao/laddzhao.github.io&type=Date)](https://star-history.com/#PlexPt/awesome-chatgpt-prompts-zh&laddzhao/laddzhao.github.io&Date)
+
