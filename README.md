@@ -13,7 +13,7 @@
 
 📱 移动端: 完全响应式设计，支持所有设备
 
-![网站预览](https://via.placeholder.com/800x400/0a0a1f/00f5ff?text=Ladd+Zhao+Portfolio)
+![网站预览](https://laddzhao.github.io/LaddZhao.png)
 
 ## ✨ 特性亮点
 
