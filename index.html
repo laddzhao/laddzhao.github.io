@@ -248,7 +248,7 @@
             color: var(--primary);
         }
 
-        /* 技能可视化区域 */
+        /* 技能柱状图可视化区域 */
         .skills-visualization {
             width: 100%;
             height: 400px;
@@ -258,174 +258,112 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(5px);
+            padding: 2rem;
         }
 
-        .radar-container {
+        .chart-container {
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .radar-chart {
+        .chart-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .bars-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 250px;
             position: relative;
-            width: 300px;
-            height: 300px;
         }
 
-        .radar-grid {
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 14%;
+            height: 100%;
+        }
+
+        .bar-label {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--light);
+            opacity: 0.8;
+        }
+
+        .bar-wrapper {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .bar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.6);
+        }
+
+        .bar-value {
             position: absolute;
-            top: 0;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bar:hover .bar-value {
+            opacity: 1;
+        }
+
+        .bar-glow {
+            position: absolute;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .radar-grid:nth-child(2) {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-        }
-
-        .radar-grid:nth-child(3) {
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-        }
-
-        .radar-grid:nth-child(4) {
-            width: 40%;
-            height: 40%;
-            top: 30%;
-            left: 30%;
-        }
-
-        .radar-grid:nth-child(5) {
-            width: 20%;
-            height: 20%;
-            top: 40%;
-            left: 40%;
-        }
-
-        .radar-axis {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 1px;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform-origin: 0 0;
-        }
-
-        .skill-point {
-            position: absolute;
-            width: 12px;
-            height: 12px;
+            height: 10px;
             background: var(--primary);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px var(--primary);
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .skill-point:hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            background: var(--accent);
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        .skill-area {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(0, 245, 255, 0.2);
-            clip-path: polygon(50% 50%, var(--point1), var(--point2), var(--point3), var(--point4), var(--point5), var(--point6));
-            transform: translate(-50%, -50%);
-            transition: all 1s ease;
-        }
-
-        .skill-label {
-            position: absolute;
-            font-size: 0.8rem;
-            color: var(--light);
-            transform: translate(-50%, -50%);
+            filter: blur(8px);
             opacity: 0.7;
-            transition: all 0.3s ease;
+            border-radius: 50%;
         }
 
-        .skill-label:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
-
-        .skill-details {
+        .y-axis {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 250px;
-            background: rgba(10, 10, 31, 0.8);
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .skill-details.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .skill-details h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-details p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-level {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-level-bar {
+            left: -40px;
+            top: 0;
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-            width: 0;
-            transition: width 1s ease;
-        }
-
-        .skill-tools {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 0;
         }
 
-        .skill-tool {
-            background: rgba(0, 245, 255, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
+        .y-tick {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
         }
 
         /* 项目区域 */
@@ -607,12 +545,8 @@
                 height: 350px;
             }
             
-            .skill-details {
-                position: relative;
-                top: 0;
-                right: 0;
-                width: 100%;
-                margin-top: 2rem;
+            .bars-container {
+                height: 200px;
             }
         }
 
@@ -641,9 +575,12 @@
                 grid-template-columns: 1fr;
             }
             
-            .radar-chart {
-                width: 250px;
-                height: 250px;
+            .bar-item {
+                width: 12%;
+            }
+            
+            .bar-label {
+                font-size: 0.7rem;
             }
         }
 
@@ -714,59 +651,71 @@
                 </div>
             </div>
             <div class="about-visual">
-                <!-- 技能数据可视化区域 -->
+                <!-- 技能数据可视化区域 - 柱状图 -->
                 <div class="skills-visualization">
-                    <div class="radar-container">
-                        <div class="radar-chart">
-                            <!-- 雷达网格 -->
-                            <div class="radar-grid"></div>
-                            <div class="radar-grid"></div>
-                            <div class="radar-grid"></div>
-                            <div class="radar-grid"></div>
-                            <div class="radar-grid"></div>
+                    <div class="chart-container">
+                        <h3 class="chart-title">技能水平分析</h3>
+                        <div class="bars-container">
                             
-                            <!-- 雷达轴 -->
-                            <div class="radar-axis" style="transform: rotate(0deg);"></div>
-                            <div class="radar-axis" style="transform: rotate(60deg);"></div>
-                            <div class="radar-axis" style="transform: rotate(120deg);"></div>
-                            <div class="radar-axis" style="transform: rotate(180deg);"></div>
-                            <div class="radar-axis" style="transform: rotate(240deg);"></div>
-                            <div class="radar-axis" style="transform: rotate(300deg);"></div>
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="90" style="height: 0%;">
+                                        <div class="bar-value">90%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">前端开发</div>
+                            </div>
                             
-                            <!-- 技能区域 -->
-                            <div class="skill-area" id="skillArea"></div>
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="85" style="height: 0%;">
+                                        <div class="bar-value">85%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">后端开发</div>
+                            </div>
                             
-                            <!-- 技能点 -->
-                            <div class="skill-point" id="skill1" data-skill="frontend"></div>
-                            <div class="skill-point" id="skill2" data-skill="backend"></div>
-                            <div class="skill-point" id="skill3" data-skill="ai"></div>
-                            <div class="skill-point" id="skill4" data-skill="design"></div>
-                            <div class="skill-point" id="skill5" data-skill="devops"></div>
-                            <div class="skill-point" id="skill6" data-skill="leadership"></div>
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="80" style="height: 0%;">
+                                        <div class="bar-value">80%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">AI/ML</div>
+                            </div>
                             
-                            <!-- 技能标签 -->
-                            <div class="skill-label" style="top: 10%; left: 50%;">前端开发</div>
-                            <div class="skill-label" style="top: 25%; left: 85%;">后端开发</div>
-                            <div class="skill-label" style="top: 60%; left: 95%;">AI/ML</div>
-                            <div class="skill-label" style="top: 90%; left: 75%;">UI/UX设计</div>
-                            <div class="skill-label" style="top: 90%; left: 25%;">DevOps</div>
-                            <div class="skill-label" style="top: 60%; left: 5%;">项目管理</div>
-                        </div>
-                    </div>
-                    
-                    <!-- 技能详情 -->
-                    <div class="skill-details" id="skillDetails">
-                        <h3 id="skillTitle">前端开发</h3>
-                        <p id="skillDescription">React、Vue、Three.js等现代前端技术</p>
-                        <div class="skill-level">
-                            <div class="skill-level-bar" id="skillLevelBar"></div>
-                        </div>
-                        <p id="skillLevelText">熟练程度: <span id="skillLevelValue">90%</span></p>
-                        <div class="skill-tools" id="skillTools">
-                            <span class="skill-tool">React</span>
-                            <span class="skill-tool">Vue</span>
-                            <span class="skill-tool">Three.js</span>
-                            <span class="skill-tool">GSAP</span>
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="75" style="height: 0%;">
+                                        <div class="bar-value">75%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">UI/UX设计</div>
+                            </div>
+                            
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="70" style="height: 0%;">
+                                        <div class="bar-value">70%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">DevOps</div>
+                            </div>
+                            
+                            <div class="bar-item">
+                                <div class="bar-wrapper">
+                                    <div class="bar" data-value="85" style="height: 0%;">
+                                        <div class="bar-value">85%</div>
+                                        <div class="bar-glow"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-label">项目管理</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -942,122 +891,26 @@
             });
         }
 
-        // 技能数据
-        const skillsData = {
-            frontend: {
-                title: "前端开发",
-                description: "精通现代前端框架和技术，专注于创建响应式和交互式用户界面",
-                level: 90,
-                tools: ["React", "Vue", "Three.js", "GSAP", "TypeScript", "Sass"]
-            },
-            backend: {
-                title: "后端开发",
-                description: "构建高性能、可扩展的服务器端应用和API",
-                level: 85,
-                tools: ["Node.js", "Python", "MongoDB", "PostgreSQL", "Redis", "AWS"]
-            },
-            ai: {
-                title: "AI/ML",
-                description: "开发和部署机器学习模型，解决复杂的业务问题",
-                level: 80,
-                tools: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenCV", "NLP", "Computer Vision"]
-            },
-            design: {
-                title: "UI/UX设计",
-                description: "创建直观、美观的用户界面和流畅的用户体验",
-                level: 75,
-                tools: ["Figma", "Adobe XD", "User Research", "Prototyping", "Design Systems"]
-            },
-            devops: {
-                title: "DevOps",
-                description: "自动化部署、监控和扩展应用程序基础设施",
-                level: 70,
-                tools: ["Docker", "Kubernetes", "Jenkins", "GitLab CI", "Terraform", "Prometheus"]
-            },
-            leadership: {
-                title: "项目管理",
-                description: "领导技术团队，管理项目生命周期和交付",
-                level: 85,
-                tools: ["Agile", "Scrum", "Jira", "Team Leadership", "Product Strategy"]
-            }
-        };
-
-        // 初始化技能雷达图
-        function initSkillsRadar() {
-            const radarChart = document.querySelector('.radar-chart');
-            const skillArea = document.getElementById('skillArea');
-            const skillDetails = document.getElementById('skillDetails');
+        // 初始化技能柱状图
+        function initSkillsChart() {
+            const bars = document.querySelectorAll('.bar');
             
-            // 技能水平数据 (0-100)
-            const skillLevels = [90, 85, 80, 75, 70, 85];
-            
-            // 计算技能点位置
-            const radius = 150; // 雷达图半径
-            const angles = [0, 60, 120, 180, 240, 300]; // 六个技能的角度
-            
-            // 设置技能点位置
-            angles.forEach((angle, index) => {
-                const skillPoint = document.getElementById(`skill${index+1}`);
-                const level = skillLevels[index] / 100;
-                const radian = angle * Math.PI / 180;
+            // 使用GSAP为每个柱状条设置动画
+            bars.forEach(bar => {
+                const value = bar.getAttribute('data-value');
                 
-                const x = 50 + Math.sin(radian) * radius * level;
-                const y = 50 - Math.cos(radian) * radius * level;
-                
-                skillPoint.style.left = `${x}%`;
-                skillPoint.style.top = `${y}%`;
-                
-                // 添加悬停事件
-                skillPoint.addEventListener('mouseenter', () => {
-                    const skillType = skillPoint.getAttribute('data-skill');
-                    showSkillDetails(skillsData[skillType]);
-                    skillDetails.classList.add('active');
+                // 创建滚动触发器
+                gsap.to(bar, {
+                    height: `${value}%`,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: bar,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
                 });
-                
-                skillPoint.addEventListener('mouseleave', () => {
-                    skillDetails.classList.remove('active');
-                });
-            });
-            
-            // 设置技能区域
-            const points = angles.map((angle, index) => {
-                const level = skillLevels[index] / 100;
-                const radian = angle * Math.PI / 180;
-                
-                const x = 50 + Math.sin(radian) * radius * level;
-                const y = 50 - Math.cos(radian) * radius * level;
-                
-                return `${x}% ${y}%`;
-            }).join(', ');
-            
-            skillArea.style.setProperty('--point1', points.split(', ')[0]);
-            skillArea.style.setProperty('--point2', points.split(', ')[1]);
-            skillArea.style.setProperty('--point3', points.split(', ')[2]);
-            skillArea.style.setProperty('--point4', points.split(', ')[3]);
-            skillArea.style.setProperty('--point5', points.split(', ')[4]);
-            skillArea.style.setProperty('--point6', points.split(', ')[5]);
-            
-            // 初始显示前端技能详情
-            showSkillDetails(skillsData.frontend);
-        }
-        
-        // 显示技能详情
-        function showSkillDetails(skill) {
-            document.getElementById('skillTitle').textContent = skill.title;
-            document.getElementById('skillDescription').textContent = skill.description;
-            document.getElementById('skillLevelValue').textContent = `${skill.level}%`;
-            
-            const skillLevelBar = document.getElementById('skillLevelBar');
-            skillLevelBar.style.width = `${skill.level}%`;
-            
-            const skillTools = document.getElementById('skillTools');
-            skillTools.innerHTML = '';
-            
-            skill.tools.forEach(tool => {
-                const toolElement = document.createElement('span');
-                toolElement.className = 'skill-tool';
-                toolElement.textContent = tool;
-                skillTools.appendChild(toolElement);
             });
         }
 
@@ -1116,7 +969,7 @@
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', () => {
             initThree();
-            initSkillsRadar();
+            initSkillsChart();
             initScrollAnimations();
         });
     </script>
