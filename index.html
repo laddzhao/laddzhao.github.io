@@ -522,10 +522,240 @@
             </div>
             <div class="about-visual">
                 <!-- 这里可以放置3D模型或数据可视化 -->
-                <div id="skills-visualization" style="width: 100%; height: 400px; background: var(--glass); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
-                    <p></p>
-                    <iframe src="./skills_network.html" width="100%" height="600" frameborder="0"></iframe>
+                <div id="skills-visualization" style="width: 100%; height: 600px; position: relative;">
+                    <div id="skills-network" style="width: 100%; height: 100%;"></div>
+                    <div class="skill-info" id="skill-info" style="position: absolute; top: 20px; left: 20px; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 10px; padding: 15px; max-width: 300px; display: none; color: var(--light);">
+                        <h3 id="skill-name">技能名称</h3>
+                        <p id="skill-desc">技能描述</p>
+                        <div class="skill-stats">
+                            <div class="stat">
+                                <span class="stat-label">掌握程度:</span>
+                                <span class="stat-value" id="skill-level">80%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <script src="https://d3js.org/d3.v7.min.js"></script>
+                <script>
+                     // 技能数据
+        const skillsData = {
+            nodes: [
+                { id: "frontend", name: "前端开发", level: 90, color: "#00f5ff", years: 5, projects: 20, 
+                  description: "React, Vue, Three.js, GSAP等现代前端技术" },
+                { id: "backend", name: "后端开发", level: 85, color: "#9d4edd", years: 4, projects: 15,
+                  description: "Node.js, Python, MongoDB, AWS等后端技术" },
+                { id: "ai", name: "AI/ML", level: 80, color: "#ff006e", years: 3, projects: 10,
+                  description: "TensorFlow, PyTorch, NLP, 计算机视觉" },
+                { id: "design", name: "UI/UX设计", level: 75, color: "#ffbd00", years: 4, projects: 12,
+                  description: "用户界面设计，用户体验研究" },
+                { id: "devops", name: "DevOps", level: 70, color: "#00cc88", years: 2, projects: 8,
+                  description: "Docker, Kubernetes, CI/CD流程" },
+                { id: "blockchain", name: "区块链", level: 65, color: "#ff6b6b", years: 2, projects: 5,
+                  description: "Solidity, Web3, 智能合约开发" },
+                { id: "react", name: "React", level: 90, color: "#61dafb", years: 4, projects: 18,
+                  description: "现代React开发，Hooks，状态管理" },
+                { id: "vue", name: "Vue", level: 85, color: "#42b883", years: 3, projects: 12,
+                  description: "Vue 2/3，Vuex，Vue Router" },
+                { id: "node", name: "Node.js", level: 88, color: "#8cc84b", years: 4, projects: 15,
+                  description: "Express，REST API，实时应用" },
+                { id: "python", name: "Python", level: 85, color: "#3776ab", years: 5, projects: 20,
+                  description: "Django，Flask，数据科学" },
+                { id: "tensorflow", name: "TensorFlow", level: 80, color: "#ff6f00", years: 3, projects: 8,
+                  description: "深度学习模型开发与部署" },
+                { id: "threejs", name: "Three.js", level: 75, color: "#000000", years: 2, projects: 6,
+                  description: "3D图形，WebGL，交互式可视化" }
+            ],
+            links: [
+                { source: "frontend", target: "react", strength: 0.9 },
+                { source: "frontend", target: "vue", strength: 0.8 },
+                { source: "frontend", target: "threejs", strength: 0.7 },
+                { source: "backend", target: "node", strength: 0.9 },
+                { source: "backend", target: "python", strength: 0.8 },
+                { source: "ai", target: "python", strength: 0.9 },
+                { source: "ai", target: "tensorflow", strength: 0.9 },
+                { source: "frontend", target: "backend", strength: 0.7 },
+                { source: "frontend", target: "design", strength: 0.6 },
+                { source: "backend", target: "devops", strength: 0.8 },
+                { source: "backend", target: "blockchain", strength: 0.5 },
+                { source: "ai", target: "blockchain", strength: 0.4 }
+            ]
+        };
+
+        // 设置SVG尺寸
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // 创建SVG容器
+        const svg = d3.select("#skills-network")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // 创建技能组
+        const skillGroup = svg.append("g");
+
+        // 创建力导向图模拟
+        const simulation = d3.forceSimulation(skillsData.nodes)
+            .force("link", d3.forceLink(skillsData.links).id(d => d.id).distance(100).strength(d => d.strength))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(50));
+
+        // 创建连线
+        const link = skillGroup.append("g")
+            .selectAll("line")
+            .data(skillsData.links)
+            .enter()
+            .append("line")
+            .attr("stroke", "#444466")
+            .attr("stroke-width", 2)
+            .attr("stroke-opacity", 0.6);
+
+        // 创建节点
+        const node = skillGroup.append("g")
+            .selectAll("g")
+            .data(skillsData.nodes)
+            .enter()
+            .append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        // 添加节点圆圈
+        node.append("circle")
+            .attr("r", d => 20 + (d.level / 5))
+            .attr("fill", d => d.color)
+            .attr("stroke", "#ffffff")
+            .attr("stroke-width", 2)
+            .style("filter", "url(#glow)");
+
+        // 添加节点文字
+        node.append("text")
+            .attr("class", "node-text")
+            .attr("dy", 5)
+            .text(d => d.name);
+
+        // 添加发光滤镜
+        const defs = svg.append("defs");
+        const filter = defs.append("filter")
+            .attr("id", "glow")
+            .attr("x", "-50%")
+            .attr("y", "-50%")
+            .attr("width", "200%")
+            .attr("height", "200%");
+            
+        filter.append("feGaussianBlur")
+            .attr("stdDeviation", "3.5")
+            .attr("result", "coloredBlur");
+            
+        const feMerge = filter.append("feMerge");
+        feMerge.append("feMergeNode")
+            .attr("in", "coloredBlur");
+        feMerge.append("feMergeNode")
+            .attr("in", "SourceGraphic");
+
+        // 添加节点交互
+        node.on("mouseover", function(event, d) {
+            // 高亮当前节点和关联节点
+            const connectedNodeIds = new Set();
+            connectedNodeIds.add(d.id);
+            
+            skillsData.links.forEach(link => {
+                if (link.source.id === d.id) {
+                    connectedNodeIds.add(link.target.id);
+                } else if (link.target.id === d.id) {
+                    connectedNodeIds.add(link.source.id);
+                }
+            });
+            
+            node.select("circle")
+                .transition()
+                .duration(200)
+                .attr("r", node => {
+                    if (node.id === d.id) {
+                        return 25 + (node.level / 5);
+                    } else if (connectedNodeIds.has(node.id)) {
+                        return 22 + (node.level / 5);
+                    } else {
+                        return 20 + (node.level / 5);
+                    }
+                })
+                .attr("opacity", node => connectedNodeIds.has(node.id) || node.id === d.id ? 1 : 0.3);
+            
+            link.transition()
+                .duration(200)
+                .attr("stroke-opacity", l => 
+                    (l.source.id === d.id || l.target.id === d.id) ? 1 : 0.1);
+            
+            // 显示技能信息
+            document.getElementById('skill-name').textContent = d.name;
+            document.getElementById('skill-desc').textContent = d.description;
+            document.getElementById('skill-level').textContent = `${d.level}%`;
+            document.getElementById('skill-years').textContent = `${d.years}年`;
+            document.getElementById('skill-projects').textContent = `${d.projects}个`;
+            document.getElementById('skill-info').style.display = 'block';
+        });
+
+        node.on("mouseout", function() {
+            // 恢复所有节点
+            node.select("circle")
+                .transition()
+                .duration(200)
+                .attr("r", d => 20 + (d.level / 5))
+                .attr("opacity", 1);
+            
+            link.transition()
+                .duration(200)
+                .attr("stroke-opacity", 0.6);
+            
+            // 隐藏技能信息
+            document.getElementById('skill-info').style.display = 'none';
+        });
+
+        // 更新力导向图位置
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node
+                .attr("transform", d => `translate(${d.x}, ${d.y})`);
+        });
+
+        // 拖动函数
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        // 响应窗口大小变化
+        window.addEventListener('resize', () => {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+            
+            svg.attr("width", newWidth)
+               .attr("height", newHeight);
+            
+            simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+            simulation.alpha(0.3).restart();
+        });
+                </script>
             </div>
         </section>
 
