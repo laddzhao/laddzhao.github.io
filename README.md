@@ -52,8 +52,9 @@
 ```bash
 git clone https://github.com/laddzhao/laddzhao.github.io.git
 cd laddzhao.github.io
+```
 
-
+```
 laddzhao.github.io/
 │
 ├── index.html              # 主页面文件
@@ -77,8 +78,9 @@ laddzhao.github.io/
 │   └── navigation.html    # 导航组件
 │
 └── LICENSE                # 开源许可证
+```
+### 动画效果
 
-动画效果
 自定义光标跟随效果
 
 滚动触发的元素动画
@@ -86,3 +88,4 @@ laddzhao.github.io/
 3D粒子背景动画
 
 悬停交互反馈
+
