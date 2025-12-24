@@ -5,6 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/laddzhao/laddzhao.github.io)
 ![GitHub last commit](https://img.shields.io/github/last-commit/laddzhao/laddzhao.github.io)
 ![GitHub repo size](https://img.shields.io/github/repo-size/laddzhao/laddzhao.github.io)
+[![GitHub stars](https://img.shields.io/github/stars/laddzhao/laddzhao.github.io)](https://github.com/laddzhao/laddzhao.github.io)
 
 一个展示我的技能、项目和经历的高级个人网站，采用现代化设计和流畅动画效果。
 
