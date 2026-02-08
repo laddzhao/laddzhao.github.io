@@ -3,983 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ladd Zhao | 高级科技感个人主页</title>
+    <title>Ladd Zhao 的开源项目集</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
-        a {
-            color: #fff; /* 设置链接的默认颜色 */
-            text-decoration: none; /* 去掉下划线 */
-        }
-        
-        :root {
-            --primary: #00f5ff;
-            --secondary: #9d4edd;
-            --accent: #ff006e;
-            --dark: #0a0a1f;
-            --darker: #050510;
-            --light: #e2f1f8;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            color: var(--light);
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
             line-height: 1.6;
-        }
-
-        /* 自定义光标 */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease;
-        }
-
-        .cursor-follower {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.4s ease;
-        }
-
-        /* 3D背景容器 */
-        #three-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* 导航栏 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* 主内容区 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
+            padding: 20px;
             min-height: 100vh;
-            padding: 8rem 0;
-            display: flex;
-            align-items: center;
-            position: relative;
         }
 
-        /* 英雄区域 */
-        .hero {
-            flex-direction: column;
-            text-align: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.5);
-        }
-
-        /* 关于区域 */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .about-content h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.2);
-            border-color: var(--primary);
-        }
-
-        .skill-card i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* 技能柱状图可视化区域 */
-        .skills-visualization {
-            width: 100%;
-            height: 400px;
-            background: var(--glass);
-            border-radius: 15px;
-            border: 1px solid var(--glass-border);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            padding: 2rem;
-        }
-
-        .chart-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .chart-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .bars-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            height: 250px;
-            position: relative;
-        }
-
-        .bar-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 14%;
-            height: 100%;
-        }
-
-        .bar-label {
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-            text-align: center;
-            color: var(--light);
-            opacity: 0.8;
-        }
-
-        .bar-wrapper {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            position: relative;
-        }
-
-        .bar {
-            width: 100%;
-            background: linear-gradient(to top, var(--primary), var(--secondary));
-            border-radius: 5px 5px 0 0;
-            position: relative;
-            transition: all 0.5s ease;
-            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
-        }
-
-        .bar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 245, 255, 0.6);
-        }
-
-        .bar-value {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .bar:hover .bar-value {
-            opacity: 1;
-        }
-
-        .bar-glow {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: var(--primary);
-            filter: blur(8px);
-            opacity: 0.7;
-            border-radius: 50%;
-        }
-
-        .y-axis {
-            position: absolute;
-            left: -40px;
-            top: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px 0;
-        }
-
-        .y-tick {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-        }
-
-        /* 项目区域 */
-        .projects {
-            flex-direction: column;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            width: 100%;
-        }
-
-        .project-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
-            border-color: var(--primary);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--dark);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .project-tag {
-            background: rgba(0, 245, 255, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* 联系区域 */
-        .contact {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .contact-form {
-            max-width: 700px;
-            width: 100%;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
         }
 
-        .form-group label {
-            display: block;
+        header h1 {
+            font-size: 2.8rem;
+            color: #2d333b;
             margin-bottom: 0.5rem;
-            font-weight: 500;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: var(--light);
+        header p {
+            font-size: 1.2rem;
+            color: #57606a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #238636;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #57606a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #filterInput {
+            padding: 12px 20px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid #d1d9e0;
+            border-radius: 50px;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .form-control:focus {
+        #filterInput:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.2);
+            border-color: #238636;
+            box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.2);
         }
 
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .repo-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
-        .social-links {
+        .repo-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e4e8;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .social-link {
-            width: 50px;
-            height: 50px;
+        .repo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .repo-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0969da;
+            text-decoration: none;
+            flex-grow: 1;
+            word-break: break-word;
+        }
+
+        .repo-name:hover {
+            text-decoration: underline;
+        }
+
+        .repo-language {
+            display: inline-flex;
+            align-items: center;
+            background: #f6f8fa;
+            color: #57606a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .repo-language::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            background: #f1e05a; /* 默认语言颜色 */
+            margin-right: 6px;
+        }
+
+        .repo-language[data-lang="HTML"]::before { background: #e34c26; }
+        .repo-language[data-lang="JavaScript"]::before { background: #f1e05a; }
+        .repo-language[data-lang="CSS"]::before { background: #563d7c; }
+
+        .repo-description {
+            color: #424a53;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .repo-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .topic {
+            background: #ddf4ff;
+            color: #0969da;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .repo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #57606a;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eaecef;
+        }
+
+        .meta-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--light);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
+            gap: 5px;
         }
 
-        .social-link:hover {
-            transform: translateY(-5px);
-            background: var(--primary);
-            color: var(--dark);
-            border-color: var(--primary);
-        }
+        .fa-star { color: #f0c929; }
+        .fa-code-fork { color: #8b949e; }
+        .fa-circle-info { color: #238636; }
 
-        /* 页脚 */
         footer {
-            background: var(--darker);
-            padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid var(--glass-border);
+            padding: 2rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+            border-top: 1px solid #e1e4e8;
+            margin-top: 20px;
         }
 
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .about {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .skills-visualization {
-                height: 350px;
-            }
-            
-            .bars-container {
-                height: 200px;
-            }
+        .loading, .error {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem 1.5rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .skills-grid {
+            .repo-list {
                 grid-template-columns: 1fr;
             }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
+            header h1 {
+                font-size: 2.2rem;
             }
-            
-            .bar-item {
-                width: 12%;
+            .stats-bar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
             }
-            
-            .bar-label {
-                font-size: 0.7rem;
-            }
-        }
-
-        /* 动画类 */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- 自定义光标 -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Three.js 3D背景 -->
-    <div id="three-bg"></div>
-
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="logo">LADD ZHAO</div>
-        <div class="nav-links">
-            <a href="#home" class="nav-link">首页</a>
-            <a href="#about" class="nav-link">关于</a>
-            <a href="#projects" class="nav-link">项目</a>
-            <a href="#contact" class="nav-link">联系</a>
-        </div>
-    </nav>
-
-    <!-- 主内容 -->
     <div class="container">
-        <!-- 英雄区域 -->
-        <section id="home" class="hero">
-            <h1>创造<span>数字未来</span>的代码艺术家</h1>
-            <p>高级全栈开发者 | AI工程师 | 技术创新者</p>
-            <a href="#projects" class="cta-button">探索我的作品</a>
-        </section>
+        <header>
+            <h1><i class="fab fa-github"></i> Ladd Zhao 的开源项目</h1>
+            <p>这里展示了我所有公开的GitHub仓库。每个项目卡片都包含了详细描述、技术标签和关键数据。</p>
+        </header>
 
-        <!-- 关于区域 -->
-        <section id="about" class="about">
-            <div class="about-content">
-                <h2>关于我</h2>
-                <p>我是一名充满激情的全栈开发者和AI工程师，专注于创造前沿的数字体验。拥有5年以上开发经验，我致力于将复杂的技术转化为直观、美观的用户界面。</p>
-                <p>我的专长包括React、Vue、Node.js、Python、TensorFlow以及Three.js等前沿技术。我相信代码不仅是功能实现，更是艺术表达。</p>
-                
-                <div class="skills-grid">
-                    <div class="skill-card fade-in">
-                        <i class="fas fa-code"></i>
-                        <h3>前端开发</h3>
-                        <p>React, Vue, Three.js, GSAP</p>
-                    </div>
-                    <div class="skill-card fade-in">
-                        <i class="fas fa-server"></i>
-                        <h3>后端开发</h3>
-                        <p>Node.js, Python, MongoDB, AWS</p>
-                    </div>
-                    <div class="skill-card fade-in">
-                        <i class="fas fa-robot"></i>
-                        <h3>AI/ML</h3>
-                        <p>TensorFlow, PyTorch, NLP, CV</p>
-                    </div>
-                </div>
+        <div class="stats-bar">
+            <!-- 统计数据将由JavaScript动态填充 -->
+            <div class="stat">
+                <span class="stat-number" id="totalRepos">--</span>
+                <span class="stat-label">项目总数</span>
             </div>
-            <div class="about-visual">
-                <!-- 技能数据可视化区域 - 柱状图 -->
-                <div class="skills-visualization">
-                    <div class="chart-container">
-                        <h3 class="chart-title">技能水平分析</h3>
-                        <div class="bars-container">
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="90" style="height: 0%;">
-                                        <div class="bar-value">90%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">前端开发</div>
-                            </div>
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="85" style="height: 0%;">
-                                        <div class="bar-value">85%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">后端开发</div>
-                            </div>
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="80" style="height: 0%;">
-                                        <div class="bar-value">80%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">AI/ML</div>
-                            </div>
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="75" style="height: 0%;">
-                                        <div class="bar-value">75%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">UI/UX设计</div>
-                            </div>
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="70" style="height: 0%;">
-                                        <div class="bar-value">70%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">DevOps</div>
-                            </div>
-                            
-                            <div class="bar-item">
-                                <div class="bar-wrapper">
-                                    <div class="bar" data-value="85" style="height: 0%;">
-                                        <div class="bar-value">85%</div>
-                                        <div class="bar-glow"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-label">项目管理</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat">
+                <span class="stat-number" id="totalStars">--</span>
+                <span class="stat-label">总星标数</span>
             </div>
-        </section>
+            <div class="stat">
+                <span class="stat-number" id="totalForks">--</span>
+                <span class="stat-label">总复刻数</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="lastUpdated">--</span>
+                <span class="stat-label">最近更新</span>
+            </div>
+        </div>
 
-        <!-- 项目区域 -->
-        <section id="projects" class="projects">
-            <h2 class="section-title">精选项目</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img height="100%" width="100%" src="https://laddzhao.github.io/finger-drawing-app/finger-drawing.png">
-                        <!-- <i class="fas fa-brain"></i> -->
-                    </div>
-                    <div class="project-content">
-                        <a href="https://github.com/laddzhao/finger-drawing-app" target="_blank"><h3>指尖签名板</h3></a>
-                        <p>基于手势识别的指尖签名板 - 使用摄像头通过手指在空中书写和绘画的网页应用</p>
-                        <div class="project-tags">
-                            <span class="project-tag">javascript</span>
-                            <span class="project-tag">canvas</span>
-                            <span class="project-tag">computer-vision</span>
-                            <span class="project-tag">web-application</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img height="100%" width="100%" src="https://laddzhao.github.io/CryptoLock/CryptoLock.png">
-                        <!-- <i class="fas fa-vr-cardboard"></i> -->
-                    </div>
-                    <div class="project-content">
-                        <a href="https://github.com/laddzhao/CryptoLock"><h3>CryptoLock（加密锁）</h3></a>
-                        <p>CryptoLock 是一个完全在浏览器中运行的本地加密/解密和文件校验工具套件。所有操作都在本地执行，不上传任何数据到服务器，确保您的数据安全。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">javascript</span>
-                            <span class="project-tag">security</span>
-                            <span class="project-tag">utility</span>
-                            <span class="project-tag">cryptography</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img height="100%" width="100%" src="https://laddzhao.github.io/liuren-divination-system/liuren-divination-system.png">
-                        <!-- <i class="fas fa-vr-cardboard"></i> -->
-                    </div>
-                    <div class="project-content">
-                        <a href="https://github.com/laddzhao/liuren-divination-system"><h3>Liuren Divination System</h3></a>
-                        <p>Liuren Divination System - A modern web implementation of traditional Chinese Six Palm Divination (小六壬). Features bilingual interface, educational content, and cultural preservation focus. Built with HTML/CSS/JavaScript.</p>
-                        <div class="project-tags">
-                            <span class="project-tag"></span>
-                            <span class="project-tag"></span>
-                            <span class="project-tag"></span>
-                            <span class="project-tag"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="controls">
+            <input type="text" id="filterInput" placeholder="🔍 输入关键词过滤项目（名称、描述或标签）..." aria-label="过滤项目">
+        </div>
 
-        <!-- 联系区域 -->
-        <section id="contact" class="contact">
-            <h2 class="section-title">与我联系</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">姓名</label>
-                    <input type="text" id="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">邮箱</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">消息</label>
-                    <textarea id="message" class="form-control" required></textarea>
-                </div>
-                <button type="submit" class="cta-button" style="width: 100%;">发送消息</button>
-            </form>
-            
-            <div class="social-links">
-                <a href="https://github.com/laddzhao" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+        <div class="repo-list" id="repoListContainer">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> 正在从GitHub加载项目数据...
             </div>
-        </section>
+        </div>
+
+        <footer>
+            <p>数据动态获取自 <a href="https://github.com/laddzhao" target="_blank">github.com/laddzhao</a> | 本页面仅用于个人作品展示</p>
+        </footer>
     </div>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2023 Ladd Zhao. 保留所有权利。</p>
-    </footer>
-
     <script>
-        // 初始化GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+        // 设置当前年份
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // 自定义光标
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
+        const GITHUB_API_URL = 'https://api.github.com/users/laddzhao/repos';
+        const repoListContainer = document.getElementById('repoListContainer');
+        const filterInput = document.getElementById('filterInput');
+        let allRepos = [];
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            gsap.to(cursorFollower, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.5,
-                ease: "power2.out"
-            });
-        });
-
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'scale(0.8)';
-            cursorFollower.style.transform = 'scale(1.5)';
-        });
-
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = 'scale(1)';
-            cursorFollower.style.transform = 'scale(1)';
-        });
-
-        // Three.js 3D背景
-        let scene, camera, renderer, particles;
-        
-        function initThree() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('three-bg').appendChild(renderer.domElement);
-            
-            // 创建粒子系统
-            const particleGeometry = new THREE.BufferGeometry();
-            const particleCount = 5000;
-            
-            const posArray = new Float32Array(particleCount * 3);
-            
-            for(let i = 0; i < particleCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-            }
-            
-            particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            const particleMaterial = new THREE.PointsMaterial({
-                size: 0.005,
-                color: new THREE.Color(0x00f5ff),
-                transparent: true,
-                opacity: 0.8
-            });
-            
-            particles = new THREE.Points(particleGeometry, particleMaterial);
-            scene.add(particles);
-            
-            camera.position.z = 2;
-            
-            // 动画循环
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                particles.rotation.x += 0.0005;
-                particles.rotation.y += 0.001;
-                
-                renderer.render(scene, camera);
-            }
-            
-            animate();
-            
-            // 响应窗口大小变化
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-
-        // 初始化技能柱状图
-        function initSkillsChart() {
-            const bars = document.querySelectorAll('.bar');
-            
-            // 使用GSAP为每个柱状条设置动画
-            bars.forEach(bar => {
-                const value = bar.getAttribute('data-value');
-                
-                // 创建滚动触发器
-                gsap.to(bar, {
-                    height: `${value}%`,
-                    duration: 1.5,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: bar,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            });
-        }
-
-        // 滚动动画
-        function initScrollAnimations() {
-            // 英雄区域文字动画
-            gsap.to('.hero h1', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                delay: 0.5
-            });
-            
-            gsap.to('.hero p', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                delay: 0.8
-            });
-            
-            gsap.to('.cta-button', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                delay: 1.1
-            });
-            
-            // 滚动触发动画
-            gsap.utils.toArray('.fade-in').forEach(element => {
-                gsap.fromTo(element, {
-                    opacity: 0,
-                    y: 50
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
-                });
-            });
-            
-            // 视差效果
-            gsap.to(particles.rotation, {
-                x: "+=1",
-                y: "+=2",
-                scrollTrigger: {
-                    scrub: 1
+        // 获取并渲染数据
+        async function fetchAndDisplayRepos() {
+            try {
+                const response = await fetch(GITHUB_API_URL);
+                if (!response.ok) {
+                    throw new Error(`网络响应异常: ${response.status}`);
                 }
-            });
+                const repos = await response.json();
+                allRepos = repos.filter(repo => !repo.private); // 仅显示公开仓库
+
+                if (allRepos.length === 0) {
+                    repoListContainer.innerHTML = '<div class="error"><i class="fas fa-inbox"></i><p>未找到公开的仓库。</p></div>';
+                    return;
+                }
+
+                updateStats(allRepos);
+                renderRepoList(allRepos);
+
+                // 添加过滤器事件监听
+                filterInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const filteredRepos = allRepos.filter(repo => 
+                        repo.name.toLowerCase().includes(searchTerm) ||
+                        (repo.description && repo.description.toLowerCase().includes(searchTerm)) ||
+                        (repo.topics && repo.topics.some(topic => topic.toLowerCase().includes(searchTerm))) ||
+                        (repo.language && repo.language.toLowerCase().includes(searchTerm))
+                    );
+                    renderRepoList(filteredRepos);
+                });
+
+            } catch (error) {
+                console.error('获取数据失败:', error);
+                repoListContainer.innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>无法加载项目数据。</p>
+                        <p><small>错误详情: ${error.message}</small></p>
+                        <p>请检查网络连接或稍后重试。</p>
+                    </div>
+                `;
+            }
         }
 
-        // 页面加载完成后初始化
-        window.addEventListener('DOMContentLoaded', () => {
-            initThree();
-            initSkillsChart();
-            initScrollAnimations();
-        });
+        // 更新顶部统计数据
+        function updateStats(repos) {
+            document.getElementById('totalRepos').textContent = repos.length;
+
+            const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+            document.getElementById('totalStars').textContent = totalStars;
+
+            const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+            document.getElementById('totalForks').textContent = totalForks;
+
+            if (repos.length > 0) {
+                const latestRepo = repos.reduce((latest, repo) => 
+                    new Date(repo.updated_at) > new Date(latest.updated_at) ? repo : latest
+                );
+                const lastUpdatedDate = new Date(latestRepo.updated_at).toLocaleDateString('zh-CN');
+                document.getElementById('lastUpdated').textContent = lastUpdatedDate;
+            }
+        }
+
+        // 渲染项目列表
+        function renderRepoList(repos) {
+            if (repos.length === 0) {
+                repoListContainer.innerHTML = '<div class="error"><i class="fas fa-search"></i><p>没有找到匹配的项目。请尝试其他关键词。</p></div>';
+                return;
+            }
+
+            // 按最后更新时间排序（最新的在前）
+            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            const reposHTML = repos.map(repo => `
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <a href="${repo.html_url}" class="repo-name" target="_blank" rel="noopener">
+                            <i class="far fa-folder-open"></i> ${repo.name}
+                        </a>
+                        ${repo.language ? `<span class="repo-language" data-lang="${repo.language}">${repo.language}</span>` : ''}
+                    </div>
+                    <p class="repo-description">${repo.description || '暂无项目描述。'}</p>
+                    ${repo.topics && repo.topics.length > 0 ? `
+                        <div class="repo-topics">
+                            ${repo.topics.map(topic => `<span class="topic">${topic}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                    <div class="repo-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i> <span>${repo.stargazers_count}</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-code-fork"></i> <span>${repo.forks_count}</span>
+                        </div>
+                        <div class="meta-item" title="最后更新于 ${new Date(repo.updated_at).toLocaleString('zh-CN')}">
+                            <i class="fas fa-circle-info"></i> <span>${formatDate(repo.updated_at)}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            repoListContainer.innerHTML = reposHTML;
+        }
+
+        // 格式化日期
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) {
+                return '今天';
+            } else if (diffDays === 1) {
+                return '昨天';
+            } else if (diffDays < 30) {
+                return `${diffDays} 天前`;
+            } else if (diffDays < 365) {
+                const diffMonths = Math.floor(diffDays / 30);
+                return `${diffMonths} 个月前`;
+            } else {
+                return date.toLocaleDateString('zh-CN');
+            }
+        }
+
+        // 页面加载完成后获取数据
+        document.addEventListener('DOMContentLoaded', fetchAndDisplayRepos);
     </script>
 </body>
 </html>
